@@ -188,6 +188,9 @@ public class GiverFragment extends Fragment {
                 .setCancelable(false)
                 .setPositiveButton("Yes", (dialog, which) -> {
                     dialog.dismiss();
+                    binding.scannerLayout.setVisibility(View.GONE);
+                    binding.close.setVisibility(View.GONE);
+                    binding.qrCodeLayout.setVisibility(View.GONE);
                     server_message = "yes_confirm";
                     Thread sendThread = new Thread(new server_SendThread());
                     sendThread.start();
@@ -404,6 +407,10 @@ public class GiverFragment extends Fragment {
     private void client_updateData() {
         Stash.put(extractedType, currentBalance);
         binding.balance.setText("Balance for " + extractedType + ": " + String.format("%.2f", currentBalance));
+        binding.scannerLayout.setVisibility(View.GONE);
+        binding.close.setVisibility(View.GONE);
+        binding.qrCodeLayout.setVisibility(View.GONE);
+
     }
 
     private boolean valid() {
