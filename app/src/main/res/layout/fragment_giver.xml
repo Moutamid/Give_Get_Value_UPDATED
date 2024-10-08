@@ -18,132 +18,116 @@
             android:orientation="vertical"
             android:padding="12dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/amount"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Amount"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="numberDecimal" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/typeSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_bg_lght"
-                    android:dropDownWidth="match_parent" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_bg"
-                    android:padding="12dp">
-
-                    <TextView
-                        android:id="@+id/balance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Balance: 0"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-
-                </RelativeLayout>
-
-                <FrameLayout
-                    android:id="@+id/scannerLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    android:layout_marginVertical="15dp">
-
-                    <com.budiyev.android.codescanner.CodeScannerView
-                        android:id="@+id/scanner_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:autoFocusButtonVisible="true"
-                        app:flashButtonVisible="true"
-                        app:frameColor="@color/purple"
-                        app:frameCornersRadius="8dp" />
-
-                </FrameLayout>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/qrCodeLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/grey"
-                    app:cardElevation="0dp">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:id="@+id/qrCode"
-                        android:layout_margin="10dp" />
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amount"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
+                android:hint="Enter Amount"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/scan"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/typeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_bg_lght"
+                android:dropDownWidth="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_bg"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/balance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Qr" />
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Balance: 0"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/request"
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Scan Qr" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request Balance" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/give"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Give Balance"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Close Preview"
+                android:textColor="@color/red"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/scannerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="15dp"
+                android:visibility="gone">
+
+                <com.budiyev.android.codescanner.CodeScannerView
+                    android:id="@+id/scanner_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Request Balance" />
+                    android:layout_height="match_parent"
+                    app:autoFocusButtonVisible="true"
+                    app:flashButtonVisible="true"
+                    app:frameColor="@color/purple"
+                    app:frameCornersRadius="8dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/give"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Give Balance"
-                    android:visibility="gone" />
+            </FrameLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/close"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:text="Close Preview"
-                    android:visibility="gone"
-                    android:textColor="@color/red" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/qrCodeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/qrCode"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

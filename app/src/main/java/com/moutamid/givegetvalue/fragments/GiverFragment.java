@@ -124,19 +124,25 @@ public class GiverFragment extends Fragment {
             client_name = dataMap.get("ServerName");
             status = dataMap.get("Status");
 
-            Thread sc = new Thread(new client_StartCommunication());
-            sc.start();
-            currentBalance = Stash.getFloat(extractedType, 0);
-            if (status.equals(Constants.GIVER)) {
-                currentBalance += Float.parseFloat(extractedValue);
+            float current = Stash.getFloat(extractedType, 0);
+            float requested = Float.parseFloat(extractedValue);
+            if (current < requested) {
+                Toast.makeText(requireContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
             } else {
-                currentBalance -= Float.parseFloat(extractedValue);
+                Thread sc = new Thread(new client_StartCommunication());
+                sc.start();
+                currentBalance = Stash.getFloat(extractedType, 0);
+                if (status.equals(Constants.GIVER)) {
+                    currentBalance += Float.parseFloat(extractedValue);
+                } else {
+                    currentBalance -= Float.parseFloat(extractedValue);
+                }
+                requireActivity().runOnUiThread(() -> {
+                    mCodeScanner.stopPreview();
+                    binding.scannerLayout.setVisibility(View.GONE);
+                    binding.close.setVisibility(View.GONE);
+                });
             }
-            requireActivity().runOnUiThread(() -> {
-                mCodeScanner.stopPreview();
-                binding.scannerLayout.setVisibility(View.GONE);
-                binding.close.setVisibility(View.GONE);
-            });
         });
 
         binding.scan.setOnClickListener(v -> {
