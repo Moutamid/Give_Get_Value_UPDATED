@@ -123,11 +123,14 @@ public class GiverFragment extends Fragment {
             client_ip = dataMap.get("ServerIP");
             client_name = dataMap.get("ServerName");
             status = dataMap.get("Status");
-
+            Log.d(TAG, "onCreateView: " + extractedValue);
             float current = Stash.getFloat(extractedType, 0);
             float requested = Float.parseFloat(extractedValue);
-            if (current < requested) {
-                Toast.makeText(requireContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
+            if (current < requested && status.equals(Constants.REQUEST)) {
+                requireActivity().runOnUiThread(() -> {
+                    Toast.makeText(requireContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
+                    mCodeScanner.startPreview();
+                });
             } else {
                 Thread sc = new Thread(new client_StartCommunication());
                 sc.start();
